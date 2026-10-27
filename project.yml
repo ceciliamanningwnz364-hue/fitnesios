@@ -12,15 +12,29 @@ targets:
   bycreep:
     type: application
     platform: iOS
-    sources: [App, Shared]
+    sources:
+      - path: .
+        includes:
+          - bycreepApp.swift
+          - Models.swift
+          - Theme.swift
+          - Calc.swift
+          - ImageStore.swift
+          - PlanGenerator.swift
+          - Components.swift
+          - WorkoutsView.swift
+          - NutritionView.swift
+          - ProgressTab.swift
+          - ProfileView.swift
+          - Shared.swift
     dependencies:
       - target: bycreepWidget
     entitlements:
-      path: App/bycreep.entitlements
+      path: bycreep.entitlements
       properties:
         com.apple.security.application-groups: [group.com.bycreep.app]
     info:
-      path: App/Info.plist
+      path: Info.plist
       properties:
         CFBundleDisplayName: bycreep
         UILaunchScreen: {}
@@ -35,13 +49,17 @@ targets:
   bycreepWidget:
     type: app-extension
     platform: iOS
-    sources: [Widget, Shared]
+    sources:
+      - path: .
+        includes:
+          - BycreepWidget.swift
+          - Shared.swift
     entitlements:
-      path: Widget/bycreepWidget.entitlements
+      path: bycreepWidget.entitlements
       properties:
         com.apple.security.application-groups: [group.com.bycreep.app]
     info:
-      path: Widget/Info.plist
+      path: WidgetInfo.plist
       properties:
         CFBundleDisplayName: bycreep
         NSExtension:
@@ -49,4 +67,4 @@ targets:
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.bycreep.app.widget
-        SKIP_INSTALL: YES
+        SKIP_INSTALL: yes
